@@ -7,6 +7,7 @@
         <4>. cd                     (进入指定目录)
         <5>. cls                    (清屏)
         <6>. exit                   (退出dos命令行)
+        <7>.win + D                 (切换回桌面))
     
 ## 2.环境安装
     <1>.JDK的下载和安装
@@ -66,3 +67,18 @@
 ![nodepad的配置](https://raw.githubusercontent.com/dj49846917/studyJava/master/day01/%E8%A7%A3%E9%87%8A%E5%9B%BE/nodepad%E7%9A%84%E9%85%8D%E7%BD%AE.png)
 
     <5>.path环境变量的配置
+        1).为什么要配置
+            程序的执行和编译需要用到javac和java命令，所以只能在bin目录下编写，实际开发中不用
+
+        2).如何配置
+            {1}.创建新的变量名: JAVA_HOME
+                计算机 ==> 右键 ==> 高级系统设置 ==> 环境变量 ==> 系统变量
+
+            {2}.为JAV_HOME添加变量值: JDK安装目录
+
+            {3}.在path环境变量最前面添加如下内容
+                %JAVA_HOME%\bin;
+![找到环境变量](https://raw.githubusercontent.com/dj49846917/studyJava/master/day01/%E8%A7%A3%E9%87%8A%E5%9B%BE/path1.png)
+![新建JAVA_HOME变量](https://raw.githubusercontent.com/dj49846917/studyJava/master/day01/%E8%A7%A3%E9%87%8A%E5%9B%BE/path2.png)
+![编辑path变量](https://raw.githubusercontent.com/dj49846917/studyJava/master/day01/%E8%A7%A3%E9%87%8A%E5%9B%BE/path3.png)
+
