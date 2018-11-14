@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>4位随机验证码</title>
+    <style>
+        html,
+        body {
+            margin: 0;
+            border: 0;
+            background: #ccc;
+        }
+
+        .box {
+            width: 400px;
+            height: 200px;
+            padding: 10px 12px 0 12px;
+            box-sizing: border-box;
+            background: #fff;
+        }
+
+        .box input {
+            width: 60%;
+            height: 40px;
+            border-radius: 5px;
+        }
+
+        .box div {
+            width: 100px;
+            height: 40px;
+            float: right;
+            background: #ccc;
+            color: #000;
+        }
+
+        .login {
+            border: none;
+            clear: both;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="">
+        <div class="box">
+            <input type="text" placeholder="请输入验证码" />
+            <div id="code"></div>
+            <input type="button" value="登录" class="login" id="login" />
+        </div>
+    </form>
+    <script>
+        // js 写的4位验证码
+        var obj = document.getElementById('login');
+        var codeObj = document.getElementById('code');
+        window.onload= function(){
+            createCode(); 
+        }
+        function createCode() {
+            var arr = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9','A','B','C','D'];
+            var code = '';
+            for (var i = 0; i < 4; i++) {
+                var index = Math.floor(Math.random()*14);
+                code += arr[index];
+            }
+            console.log(code)
+        }
+        obj.onclick = function(){
+            createCode();
+        }
+    </script>
+</body>
+
+</html>
