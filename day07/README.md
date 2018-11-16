@@ -90,3 +90,211 @@
                     }
                 }
         
+        <7>.成员变量与局部变量的区别:
+                {1}: 在类中的位置不同
+                        成员变量: 类中,方法外
+                        局部变量: 方法中或者方法声明上(形式参数)
+
+                {2}: 在内存中的位置不同
+                        成员变量: 堆内存
+                        局部变量: 栈内存		
+        
+                {3}: 生命周期不同
+                        成员变量: 随着对象的创建而存在,随着对象的消失而消失
+                        局部变量: 随着方法的调用而存在,随着方法的调用完毕而消失
+        
+                {4}: 初始化值的问题
+                        成员变量: 有默认值
+                        局部变量: 没有默认值。必须先定义,赋值，最后再使用
+
+                {5}: 举例:
+                        public class Variable {
+                            int x; // 成员变量
+                            
+                            public void study(){
+                                int y; // 局部变量(错误，必须赋值)
+                                System.out.println(x);
+                        //		System.out.println(y); // 局部变量没有赋值，会报错
+                            }
+                        }
+
+        <8>.私有变量：private
+                {1}.private:
+                    是一个修饰符
+                    可以修饰成员变量，也可以修饰成员方法
+                    被private修饰的成员只能在本类中被访问
+
+                {2}.针对private修饰的成员变量，我们会相应的提供getxxx()和setxxx()用于获取和设置成员变量的值，方法用public修饰
+
+                {3}.举例:
+                        Student.java
+
+                        public class Student{
+                            String name;
+                            private int age;
+
+                            public void setAge(int a){ // 这样写就可以在设置时做校验
+                                if(a<0 || a>=200){
+                                    System.out.println("输入年龄有误");
+                                }else{
+                                    age = a;
+                                }
+                            }
+                            
+                            public int getAge(){
+                                return age;
+                            }
+                            
+                            public void show(){
+                                System.out.println("姓名是:" + name + ",年龄是:" + age);
+                            }
+                        }
+
+                        StudentDemo.java
+
+                        public class StudentDemo{
+                            public static void main(String[] args){
+                                s.show() // 输出：  姓名是:null,年龄是0
+                                
+                                s.name = "张国荣";
+                                s.age = 18; // 报错
+                                s.setAge(-18); 
+                                s.show(); // 输出：   姓名是:张国荣,年龄是0
+
+                                s.setAge(20);
+                                s.show(); // 输出：   姓名是:张国荣,年龄是20
+                            }
+                        }
+
+## 3.this: 
+        代表所在类的对象引用
+        方法被哪个对象调用,this就代表那个对象
+
+        举例:
+                Student.java
+
+                public class Student {
+                    private String name;
+                    private int age;
+                    
+                    public void setName(String name){
+                        this.name = name;
+                    }
+                    
+                    public String getName(){
+                        return name;
+                    }
+                    
+                    public void setAge(int age){
+                        this.age = age;
+                    }
+                    
+                    public int getAge(){
+                        return age;
+                    }	
+                }
+
+                StudentDemo.java
+
+                public class StudentDemo {
+                    public static void main(String[] args) {
+                        Student s = new Student();
+                        System.out.println(s.getName() +"-------" +s.getAge());
+                        s.setName("张国荣");
+                        s.setAge(20);
+                        System.out.println(s.getName() +"-------" +s.getAge());
+                    }
+                }
+
+## 4.构造方法
+        <1>.构造方法:
+     		    给对象的数据进行初始化
+
+        <2>.格式:
+                方法名和类名相同
+                没有返回类型,连void都不能写
+                没有具体的返回值
+
+        <3>.举例:
+                Student.java
+                
+                public class Student {
+                    public Student(){
+                        System.out.println("这是构造方法");
+                    }
+                }
+
+                StudentDemo.java
+
+                public class StudentDemo {
+                    public static void main(String[] args) {
+                        // 如何调用构造方法呢？
+                        // 通过new 关键字
+                        // 格式: 类名 对象名 = new 构造方法(...)
+                        
+                        Student s = new Student();
+                    }
+                }
+
+        <4>.构造方法注意事项:
+                {1}: 如果我们没有给出构造方法，系统将会提供一个默认的无参构造方法给我们使用
+                
+                {2}: 如果我们给出了构造方法,系统将不再提供默认的无参构造方法给我们使用
+                    这个时候,如果我们想使用无参构造方法，就必须自己提供
+                    推荐: 自己给无参构造方法
+
+                {3}.成员变量赋值:
+                        [1]: setXxx()方法
+                        [2]: 带参构造函数
+
+                {4}.举例:
+                        Student.java
+
+                        public class Student {
+                            // 注释了，在Student.java里不会报错，因为系统会提供一个
+                            /*
+                            * public Student(){ System.out.println("这是构造方法"); }
+                            */
+
+                            private String name;
+                            private int age;
+
+                            // public Student(){}
+
+                            public Student(String name) {
+                                this.name = name;
+                            }
+
+                            public Student(int age) {
+                                this.age = age;
+                            }
+
+                            public Student(String name, int age) {
+                                this.name = name;
+                                this.age = age;
+                            }
+
+                            public void show() {
+                                System.out.println(this.name + "-------" + this.age);
+                            }
+                        }
+
+                        StudentDemo.java
+
+                        public class StudentDemo {
+                            public static void main(String[] args) {
+                                // 如何调用构造方法呢？
+                                // 通过new 关键字
+                                // 格式: 类名 对象名 = new 构造方法(...)
+                                
+                                Student s = new Student("哥哥",20); // 输出: 哥哥 20
+                                Student s = new Student("哥哥"); // 输出: 哥哥 0
+                                Student s = new Student(20); // 输出: null 0
+                                s.show();
+                            }
+                        }
+
+
+
+
+
