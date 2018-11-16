@@ -87,6 +87,12 @@
                         
                         System.out.println("姓名:" + st.name);
                         System.out.println("年龄:" + st.age);
+                        
+                        // 给成员变量赋值
+                        st.name = "哥哥";
+
+                        // 再次输出
+                        System.out.println(st.name)
                     }
                 }
         
