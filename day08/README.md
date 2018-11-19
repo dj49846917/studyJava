@@ -184,3 +184,44 @@
                         System.out.println(c); // 输出： "HELLOWORLD"
                     }
                 }
+
+        <5>.练习：
+                {1}.键盘录入一个字符串，把该字符串的首字母转成大写，其余小写(只考虑英文大小写字母字符);
+                        代码请参考:  day08/code/String/StringTest4.java
+
+        <6>.去除字符串两端的空格
+                String trim()
+
+        <7>.按指定符号分割字符串
+                String[] split(String str)
+
+        <8>. 举例：
+                public class StringDemo {
+                    public static void main(String[] args) {
+                        String s1 = "helloworld";
+                        String s2 = "  helloworld  ";
+                        String s3 = " hello world ";
+                        System.out.println("---" + s1 + "---");
+                        System.out.println("---" + s1.trim() + "---"); // 输出---helloworld---
+                        System.out.println("---" + s2 + "---");// 输出---  helloworld  ---
+                        System.out.println("---" + s2.trim() + "---");// 输出---helloworld---
+                        System.out.println("---" + s3 + "---");// 输出--- hello world --- 
+                        System.out.println("---" + s3.trim() + "---");// 输出---hello world---
+                    
+                        // String[] split(String str);
+                        String s = "aa,bb,cc";
+                        String[] arr = s.split(",");
+                        System.out.println(arr);
+                        for(int x=0;x<arr.length;x++){
+                            System.out.println(arr[x]); // ["aa","bb","cc"];
+                        }
+                    }
+                }
+
+        <9>.练习:   把数组中的数据按照指定格式拼接成一个字符串
+                        举例: int[] arr = {1,2,3};
+                        输出结果: [1,2,3];
+                        代码请看： day08/code/String/StringTest5.java
+
+                
+##  8.
