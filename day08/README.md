@@ -218,10 +218,42 @@
                     }
                 }
 
-        <9>.练习:   把数组中的数据按照指定格式拼接成一个字符串
+        <9>.练习:   
+                {1}.把数组中的数据按照指定格式拼接成一个字符串
                         举例: int[] arr = {1,2,3};
                         输出结果: [1,2,3];
                         代码请看： day08/code/String/StringTest5.java
 
+                {2}.字符串反转
+                        举例: 键盘录入"abc"
+                        输出: "cba"
+                        代码请看： day08/code/String/StringTest6.java
                 
-##  8.
+##  8.StringBuilder类
+        <1>.拼接字符串耗费内存原因:
+                每次拼接都会产生新的字符串对象,而利用StringBuilder来拼接字符串自始至终用的都是同一个StringBuilder容器
+        
+        <2>.概念:
+                是一个可变的字符串。字符串缓冲区类。
+
+        <3>.String和StringBuilder的区别:
+                String的内容是固定的。
+                String的Builder的内容是可变的。
+
+        <4>.成员方法:
+                public int capacity(): 返回当前容量
+                public int length(): 返回长度(字符数)
+        
+                容量:理论值
+                长度:实际值
+
+        <5>.举例：
+                public class StringBuilderDemo {
+                    public static void main(String[] args) {
+                        StringBuilder sb = new StringBuilder();
+                        System.out.println(sb);
+                        System.out.println("sb.capacity"+sb.capacity()); // 输出16
+                        System.out.println("sb.length()"+sb.length()); // 输出0
+                    }
+                }
+        	
