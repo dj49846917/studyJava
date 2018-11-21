@@ -256,4 +256,86 @@
                         System.out.println("sb.length()"+sb.length()); // 输出0
                     }
                 }
-        	
+
+        <6>.
+            {1}.添加功能:
+		        public StringBuilder append(任意类型): 添加数据，并返回自身对象
+
+            {2}.反转功能:
+                public StringBuilder reverse()
+
+            {3}.链式编程
+                    举例:
+                        sb.append("hello").append("world").append(true);
+		                System.out.println(sb); // 输出"helloworldtrue"
+            
+            {4}.代码如下:
+                public class StringBuilderDemo {
+                    public static void main(String[] args) {
+                        // 创建对象
+                        StringBuilder sb = new StringBuilder();
+                        
+                        // public StringBuilder append(任意类型)
+                        StringBuilder sb2 = sb.append("hello");
+                        
+
+                        System.out.println("sb2" + sb2); // 输出"hello"
+                        System.out.println("sb" + sb);// 输出"hello"
+                        System.out.println(sb == sb2);// 输出true 说明作用于同一个地址
+                        
+                        sb.append("world");
+                        sb.append(true);
+                        System.out.println(sb); // 输出"helloworldtrue"
+                        
+                        // 链式编程
+                        sb.append("hello").append("world").append(true);
+                        System.out.println(sb); // 输出"helloworldtrue"
+                        
+                        // public StringBuilder reverse() // 反转
+                        sb.reverse();
+                        System.out.println(sb); // 输出"eurtdlrowolleholleh"
+                    }
+                }
+
+        
+        <7>.StringBuilder与String的相互转化
+            {1}. StringBuilder ==> String
+                    public String toString(): toString()将StringBuilder转化为String
+
+            {2}. String ==> StringBuilder
+                    StringBuilder(String str): 用过构造方法就可以实现把String转化为StringBuilder
+
+            {3}.举例:
+                    public class StringBuilderTest {
+                        public static void main(String[] args) {
+                            
+                            // StringBuilder 转化为 String
+                            StringBuilder sb = new StringBuilder();
+                            sb.append("hello").append("world");
+                            System.out.println("sb:" + sb); // 输出"sb:helloworld"
+                            String s = sb.toString();
+                            System.out.println("s:" +s); // 输出"s:helloworld"
+                            
+                            // String 转化为 StringBuilder
+                            String arr = "好好学习";
+                            StringBuilder ar = new StringBuilder(arr);
+                            System.out.println("ar:"+ar); // 输出 "ar: 好好学习"
+                        }
+                    }
+            
+            {4}.练习
+                    1).把数组拼接成一个字符串
+                        举例：int[] arr = {1,2,3}
+                        结果:[1,2,3]
+                        代码请看：
+                                day08/code/StringBuilder/StringBuilderTest.java
+
+                    2).键盘录入一个数据，并实现反转
+                        代码请看:
+                                day08/code/StringBuilder/StringBuilderTest2.java
+
+                    3).键盘录入一个数据，并判断是否为对称字符串
+                        代码请看:
+                                day08/code/StringBuilder/StringBuilderTest3.java
+                        
+        
