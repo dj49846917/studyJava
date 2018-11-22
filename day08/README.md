@@ -2,6 +2,8 @@
         详细情况 day08/API/API的使用.txt
 
 ##  2.Scanner: 键盘录入
+        自动导包: ctrl + shift +o
+
         举例:
             import java.util.Scanner;
 
