@@ -60,50 +60,51 @@ public class StudentManager {
 			}
 		}
 	}
-	
+
 	// 修改学生
-	public static void updateStudent(ArrayList<Student> array){
+	public static void updateStudent(ArrayList<Student> array) {
 		// 修改学生的思路: 键盘录入一个学号，到集合中去查找，看是否有学生使用的是该学号，如果有就修改学生
 		// 创建键盘录入对象
 		Scanner sc = new Scanner(System.in);
 		System.out.println("请输入你要修改的学生的学号:");
 		String id = sc.nextLine();
-		
+
 		// 定义一个索引
 		int index = -1;
-		
+
 		// 遍历集合
-		for(int x=0;x<array.size();x++){
+		for (int x = 0; x < array.size(); x++) {
 			// 获取每一个学生对象
 			Student s = array.get(x);
-			if(s.getId().equals(id)){
+			if (s.getId().equals(id)) {
 				index = x;
 				break;
 			}
 		}
-		if(index == -1){
+		if (index == -1) {
 			System.out.println("不好意思，你要修改的学号对应的学生信息不存在，请回去重新你的选择");
-		}else{
+		} else {
 			System.out.println("请输入学生新姓名:");
 			String name = sc.nextLine();
 			System.out.println("请输入学生新年龄:");
 			String age = sc.nextLine();
 			System.out.println("请输入学生新居住地:");
 			String address = sc.nextLine();
-			
+
 			// 创建学生对象
 			Student s = new Student();
+			s.setId(id);
 			s.setName(name);
 			s.setAge(age);
 			s.setAddress(address);
-			
+
 			// 修改集合中的学生对象
 			array.set(index, s);
 			// 给出提示
 			System.out.println("修改成功");
 		}
 	}
-	
+
 	// 删除学生
 	public static void deleteStudent(ArrayList<Student> array) {
 		// 删除学生的思路:键盘录入一个学号，到集合中取查找，看是否有学生使用的是该学号，如果有就删除该学生
@@ -111,38 +112,31 @@ public class StudentManager {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("请输入你要删除的学生的学号:");
 		String id = sc.nextLine();
-		
+
 		/*
-		// 遍历集合
-		for(int x=0;x<array.size();x++){
-			// 获取每一个学生对象
-			Student s = array.get(x);
-			if(s.getId().equals(id)){
-				array.remove(x); // 根据索引删除
-				break;
-			}
-		}
-		
-		// 给出提示
-		System.out.println("删除学生成功");
-		*/
-		
+		 * // 遍历集合 for(int x=0;x<array.size();x++){ // 获取每一个学生对象 Student s =
+		 * array.get(x); if(s.getId().equals(id)){ array.remove(x); // 根据索引删除
+		 * break; } }
+		 * 
+		 * // 给出提示 System.out.println("删除学生成功");
+		 */
+
 		// 我们必须给出学号不存在的时候的提示
-		
+
 		// 定义一个索引
 		int index = -1;
 		// 遍历集合
-		for(int x=0;x<array.size();x++){
+		for (int x = 0; x < array.size(); x++) {
 			// 获取每一个学生对象
 			Student s = array.get(x);
-			if(s.getId().equals(id)){
+			if (s.getId().equals(id)) {
 				index = x;
 				break;
 			}
 		}
-		if(index == -1){
+		if (index == -1) {
 			System.out.println("不好意思，你要删除的学号对应的学生信息不存在,请回去重新你的选择");
-		}else{
+		} else {
 			array.remove(index);
 			// 给出提示
 			System.out.println("删除学生成功");
@@ -170,7 +164,7 @@ public class StudentManager {
 		Scanner sc = new Scanner(System.in);
 		// 为了让id能够访问到，我们就把id定义在了循环的外面
 		String id;
-		
+
 		while (true) {
 			// 为了让代码能够回到这里，用
 			System.out.println("请输入学生学号:");
@@ -189,7 +183,7 @@ public class StudentManager {
 			}
 			if (flag) {
 				System.out.println("你输入的学号已经被占用，请重新输入");
-			}else{
+			} else {
 				break; // 结束循环
 			}
 		}
