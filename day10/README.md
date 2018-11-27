@@ -255,33 +255,8 @@
                             }
                         }
 
-## 6. IO流的练习
-        <1>.复制文本文件
-            public class FileWriterDemo {
-                public static void main(String[] args) throws IOException {
-                    FileReader fr = new FileReader("StringBuilderDemo.java");
-                    FileWriter fw = new FileWriter("Copy.java");
-                    
-                    // 方法一
-            //		int chs;
-            //		while((chs=fr.read())!=-1){
-            ////			System.out.print((char)chs);
-            //			fw.write(chs);
-            //		}
-                    
-                    // 方法二
-                    char[] ch = new char[5];
-                    int chs;
-                    while((chs=fr.read(ch))!=-1){
-                        System.out.print(new String(ch,0,chs));
-                        fw.write(chs);
-                    }
-                    fr.close();
-                    fw.close();
-                }
-            }
 
-## 7.BufferedWriter和BufferedReader字符缓冲流
+## 6.BufferedWriter和BufferedReader字符缓冲流
         <1>.BufferedWriter: 
                 将文本写入字符输出流，缓冲各种字符，从而提供单个字符、数组和字符串的高效写入
 
@@ -349,7 +324,7 @@
                             }
                         }
 
-## 8.字符缓冲流的特殊功能
+## 7.字符缓冲流的特殊功能
         <1>. BufferedWriter
         		void newLine(): 写一个换行符，这个换行符由系统决定
 
@@ -374,8 +349,33 @@
                         String line;
                         while((line=br.readLine())!=null){
                             System.out.println(line);
+                            bw.write(line);
+                            bw.newLine();
                         }
                         
                         br.close();
+                        bw.close();
                     }
                 }
+
+## 8. IO流的练习
+        <1>.复制文本文件(5种方式) 
+                FileWriterDemo.java  => Copy.java
+            
+            {1}.具体代码参考:
+                    day10/code/练习/BufferedStreamTest.java
+
+        <2>.把ArrayList集合中的字符串数据存储到文本文件中，每一个字符串元素作为文件中的一部分
+                helloworldjava =>array.txt
+
+            {1}.具体代码参考:
+                    day10/code/练习/BufferedStreamTest2.java
+
+        <3>.从文本文件中读取数据到ArrayList集合中，并遍历集合。每一行数据作为一个字符串元素
+                array.txt => arrayList
+
+            {1}.具体代码参考: 
+                    day10/code/练习/BufferedStreamTest3.java
+
+
+        
