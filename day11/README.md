@@ -258,3 +258,106 @@
 
             <2>.顺序:
                     静态代码块 》 构造代码块 》 函数代码块
+
+##  7.继承
+        <1>.继承的作用:
+                多个类共同的成员变量和成员方法，抽取到另外一个类中(父亲)，再让多个类去继承这个父类，我们的多个类就可以获取到父类中的成员了。
+
+        <2>.举例:
+                public class ExtendsDemo {
+                    public static void main(String[] args) {
+                        Dota d = new Dota();
+                        d.start();
+                        
+                        Lol l = new Lol();
+                        l.stop();
+                    }
+                }
+
+                class Games{
+                    String name;
+                    double version;
+                    String agent;
+                    
+                    public void start(){
+                        System.out.println("游戏启动了");
+                    }
+                    
+                    public void stop(){
+                        System.out.println("游戏关闭了");
+                    }
+                }
+
+                class Dota extends Games{}
+
+                class Lol extends Games{}
+
+##  3.继承的特点
+        <1>.Java语言只支持单一继承，只能继承一个父类(一个儿子只能有一个亲爹)
+     	<2>.Java语言支持多层继承(一个儿子可以有一个亲爹，还可以有一个亲爷爷)
+
+        <3>. 举例:
+                public class ExtendsDemo2 {
+                    public static void main(String[] args) {
+                        Game1 l = new Game1();
+                        l.update(); // 输出: "PCGame更新了"
+                        l.start(); // 输出: "游戏启动了"
+                    }
+                }
+                // 爷爷
+                class Game {
+                    public void start(){
+                        System.out.println("游戏启动了");
+                    }
+                }
+                // 父类
+                class PCGames extends Game {
+                    public void update(){
+                        System.out.println("PCGame更新了");
+                    }
+                }
+                // 父类
+                class MobileGames extends Game {
+                    public void update(){
+                        System.out.println("MobileGames更新了");
+                    }
+                }
+                // 子类
+                class Game1 extends PCGames{}
+
+##  4.继承中成员变量的特点:
+        <1>.继承中成员变量的特点:
+                {1}.子类只能获取父类非私有成员
+                {2}.子父类中成员变量的名字不一样直接获取父类的成员变量
+                {3}.子父类中成员变量的名字一样的获取的是子类的成员变量
+
+        <2>.就近原则: 谁离我近我就用谁
+                {1}.如果有局部变量就用局部变量
+                {2}.如果没有局部变量，有子类的成员变量就用子类的成员变量
+                {3}.如果没有局部变量和子类的成员变量，有父类的成员变量就使用父类的成员变量
+
+        <3>.super: 可以获取父类的成员变量和成员方法，用法和this是相似的
+
+        <4>.举例:
+                public class ExtendsDemo3 {
+                    public static void main(String[] args) {
+                        Kid k = new Kid();
+                        k.show(); // 输出: "建林"
+                    }
+                }
+
+                class Dad{
+                    String name = "建林";
+                //	private String name = "建林"; // 子类引用会报错
+                }
+
+                class Kid extends Dad{
+                    String name = "李四";
+                    
+                    public void show(){
+                        String name = "王麻子";
+                        System.out.println(super.name); // 就算子类定义了name,也输出: "建林"
+                        System.out.println(this.name); // 输出： "李四"
+                        System.out.println(name); // 输出: "王麻子"
+                    }
+                }
