@@ -292,6 +292,17 @@
 
             class Lol extends Games{}
 
+    <3>.继承的优缺点:
+            {1}.优点:
+                    1).提高了代码的复用性
+                    2).提高了代码的可维护性
+
+            {2}.缺点:
+                    1).类的耦合性增强了
+                    2).开发的原则: 高内聚低耦合
+                    3).内聚: 就是自己完成某件事情的能力
+                    4).耦合: 类于类的关系
+
 ##  8.继承的特点
         <1>.Java语言只支持单一继承，只能继承一个父类(一个儿子只能有一个亲爹)
         <2>.Java语言支持多层继承(一个儿子可以有一个亲爹，还可以有一个亲爷爷)
@@ -469,3 +480,64 @@
                     }
                     public Children(int num){
                         System.out.println("子类有参构造");
+
+##  13.this和super的区别
+        <1>.this和super的区别:
+                {1}.this: 
+                        1).表示当前对象的引用
+                        2).调用子类的成员变量
+                        3).调用子类的成员方法
+                        4).在子类的构造方法第一行调用子类其他构造方法	
+
+                {2}.super：
+                        1).表示子类对象的父类引用
+                        2).调用父类的成员变量
+                        3).调用父类的成员方法
+                        4).在子类的构造方法第一行调用父类的构造方法
+
+        <2>.举例:
+                public class ExtendsDemo7 {
+                    public static void main(String[] args) {
+                        Zi z = new Zi();
+                        z.function();
+                    }
+                }
+                // 父类
+                class Die {
+                    int num = 10;
+                    public Die(){
+                        System.out.println("父类无参构造");
+                    }
+                    public Die(int num){
+                        System.out.println("父类有参构造");
+                    }
+                    public void method(){
+                        System.out.println("父类的方法");
+                    }
+                }
+                // 子类
+                class Zi extends Die {
+                //	int num = 30;
+                    public Zi(){
+                //		this(1); // 第一行不调用子类其他构造函数或者父类构造，默认调用父类无参构造
+                        System.out.println("子类无参构造");
+                    }
+                    public Zi(int num){
+                        System.out.println("子类有参构造");
+                    }
+                    public void method(){
+                        System.out.println("子类的方法");
+                    }
+                    
+                    public void function(){
+                //		this.num = 50;
+                //		System.out.println(num); // 输出50
+                //		this.method(); // 输出:"子类的方法"
+                        
+                //		super.method(); // 输出: "父类的方法"
+                //		System.out.println(num); // 输出:10  如果子类没有定义num,则为父类的num
+                        System.out.println(this.num); // 输出:10  如果子类没有定义num,则为父类的num
+                    }
+                }
+
+                        
