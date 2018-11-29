@@ -257,4 +257,114 @@
                 {4}. 同步代码块
 
             <2>.顺序:
-                    静态代码块 》 构造代码块 》 函数代码块
+                    静态代码块 》 构造代码块 》 函数代码块HHHHHHHHHHHHHHHHHHHHHHHHHHh
+
+##  继承中成员方法的特点
+        <1>.继承中成员方法的特点:
+                {1}.子类中没有这个方法，调用父类的
+                {2}.子类中重写了这个方法，调用子类的
+
+        <2>.方法的重写: 
+                在子父类当中，子类的方法和父类完全一样,子类覆盖了父类的方法，当子类覆盖了父类的方法之后，使用子类对象调用的就是子类的方法
+ 	    
+        <3>.方法的重载: 
+                在一个类中，有多个重名的方法，但是其参数不一样(参数的个数、类型、顺序)，和返回值无关
+
+        <4>.举例:
+                public class ExtendsDemo4 {
+                    public static void main(String[] args) {
+                        Kid k = new Kid();
+                        k.eat(); // 输出: "好好吃饭"
+                    }
+                }
+
+                class Dad{
+                    public void eat() {
+                        System.out.println("小酌两口");
+                        System.out.println("去睡觉了");
+                    }
+                }
+
+                class Kid extends Dad{
+                    public void eat() {
+                        System.out.println("好好吃饭");
+                    }
+                }
+
+##  方法重写的注意事项
+        <1>.方法重写的应用场景:
+                当父类的方法不能完全满足子类使用，这个时候子类重写父类的方法，并可以在方法中使用关键字super调用父类的方法，这样做既可以保有父类的功能，又可以拥有子类持有的功能
+
+        <2>.方法重写的注意事项:
+                <1>.不能重写父类私有的方法
+                <2>.权限必须大于等于父类方法的权限
+
+        <3>.注解： @
+
+        <4>.举例:
+                public class ExtendsDemo5 {
+                    public static void main(String[] args) {
+                        NewPhone np = new NewPhone();
+                        np.call();
+                    }
+                }
+                class Phone {
+                    public void call(){
+                        System.out.println("打电话");
+                    }
+                //	private void call(){
+                //		System.out.println("打电话");
+                //	}
+                }
+                class NewPhone extends Phone {
+                    // 加入重写的注解，可以规范代码，严格校验
+                    @Override
+                    public void call(){ // 父类私有方法，重写会报错
+                        System.out.println("录音");
+                        super.call(); // 继承父类的方法
+                    }
+                }
+
+##  继承中构造方法的执行顺序
+        <1>.继承中构造方法的执行顺序：
+                在有子父类继承关系的类中，创建子类的对象，调用子类的构造方法，如果子类构造方法的第一行代码没有调用父类的构造方法，则会调用父类的无参构造,肯定要执行父类的构造，因为要先给父类的成员变量进行初始化，子类肯会使用到
+
+        <2>.我们可以使用super()在子类构造方法的第一行中调用父类的构造方法
+
+        <3>.我是父类无参构造 --- 我是子类有参构造 --- 我是子类无参构造
+
+        <4>.举例:
+                public class ExtendsDemo6 {
+                    public static void main(String[] args) {
+                        Children c = new Children();
+                    }
+                }
+
+                class Father {
+                    public Father(){
+                        System.out.println("父类无参构造");
+                    }
+                    public Father(int num){
+                        System.out.println("父类有参构造");
+                    }
+                }
+
+                class Children extends Father {
+                    public Children(){
+                        /*
+                        * super(1) 输出: 	父类有参构造
+                                            子类无参构造
+                        */
+                //		super(1);
+                        /*
+                        * this(1); 输出:	父类无参构造
+                                            子类有参构造
+                                            子类无参构造
+                        */
+                        this(1);
+                        System.out.println("子类无参构造");
+                    }
+                    public Children(int num){
+                        System.out.println("子类有参构造");
+                    }
+                }
