@@ -184,7 +184,262 @@
             现在篮球运动员和教练要出国访问，需要学习英语
             请根据你所学的知识，分析出来哪些是类，哪些是接口，哪些是抽象类
 
-        <2>.
+        <2>.解释图请参考:
+![分析](https://raw.githubusercontent.com/dj49846917/studyJava/master/day13/%E8%A7%A3%E9%87%8A%E5%9B%BE/player.png)  
 
         <3>.详细代码参考:
-                day13/code/InterfaceTest.java                
+                day13/code/InterfaceTest.java      
+
+##  7.匿名对象
+        <1>.匿名对象:
+                没有名字的对象     
+
+        <2>.应用场景:
+                {1}.当对象只调用一次的时候可以使用户匿名对象
+                {2}.可以当做参数进行传递，但是无法在传参之前做其他的事情    
+
+        <3>.注意:
+                匿名对象可以调用成员变量并赋值，但是赋值没有意义（因为每次都是new出来的，所以都是初始值）
+
+        <4>.举例:
+                public class AnonymousObjectDemo {
+                    public static void main(String[] args) {
+                        /*Student s= new Student();
+                        s.study();
+                        s.study();
+                        s.study();*/
+                        
+                        /*new Student(); // 匿名对象，没有变量引用的对象
+                        new Student().study();
+                        new Student().study();
+                        new Student().study();*/
+                        
+                        new Student().age = 18;
+                        System.out.println(new Student().age); // 输出: 0  因为new出来的，初始值为0
+                    }
+                }
+
+                class Student{
+                    String name;
+                    int age;
+                    
+                    public void study(){
+                        System.out.println("好好学习");
+                    }
+                }
+
+##  8. final常量
+        <1>.final: 
+                修饰符，可以用于修饰类、成员方法和成员变量
+
+        <2>.特点:
+                {1}.final所修饰的类:
+                        不能被继承，不能有子类
+
+                {2}.final修饰的方法: 
+                        不能被重写
+
+                {3}.final所修饰的变量: 
+                        是不可以修改的，是常量
+
+        <3>.常量:
+                {1}.字面量常量: 1,2,3
+                {2}.自定义常量: 被final修饰的成员变量，一旦初始化则不可改变
+
+        <4>.注意:
+                自定义常量必须初始化，可以选择显示初始化或者构造初始化
+
+        <5>.详细代码如下:
+                public class FinalDemo {
+                    public static void main(String[] args) {
+                        Dog d = new Dog();
+                //		d.eat();
+                //		d.num = 20; // final修饰的变量不能修改
+                        System.out.println(d.num); // 输出: 10
+                        System.out.println(d.NUM); // 输出: 20
+                    }
+                }
+
+                /*final*/ class Animal{
+                    public final void eat(){
+                        System.out.println("吃东西");
+                    }
+                }
+
+                class Dog extends Animal{
+                //	public void eat(){} // final修饰的方法，不能被重写
+                    
+                    final int num = 10;
+                    final int NUM;
+                    public Dog(){
+                        NUM = 20;
+                    }
+                }
+
+                //class Dog extends Animal{} // 被final修饰的类不能被继承
+
+##  9.多态
+        <1>.多态的前提:
+                {1}.子父类的继承关系
+                {2}.方法的重写
+                {3}.父类引用指向子类对象
+
+        <2>.动态绑定: 
+                运行期间调用的方法，是根据其具体的类型
+
+        <3>.具体代码:
+                public class polymorphicDemo {
+                    public static void main(String[] args) {
+                        /*Cat a = new Cat();
+                        a.eat();*/
+                        
+                        // 父类引用	Animal a
+                        // 指向		=
+                        // 子类对象	new Cat()
+                        Animal a = new Cat(); // 通俗理解就是: 猫是猫，猫是动物
+                        a.eat(); // 输出: '猫吃鱼'
+                    }
+                }
+
+                class Animal{ // 父类
+                    public void eat(){
+                        System.out.println("吃东西");
+                    }
+                }
+
+                class Cat extends Animal{ // 子类
+                    @Override
+                    public void eat(){
+                        System.out.println("猫吃鱼");
+                    }
+                }
+
+##  10.多态的特点
+        <1>.多态的成员特点:
+                {1}.成员变量： 编译时看的是左边(父类)，运行时看的左边(父类)
+                {2}.成员方法: 编译时看的是左边(父类)，运行时看的是右边(子类)
+                {3}.静态方法: 编译时看的是左边(父类)，运行时看的是左边(父类)
+
+        <2>.编译时看的都是左边，运行时成员方法看的是右边，其他(成员变量和静态的方法)看的都是左边
+
+        <3>.具体代码如下:
+                public class polymorphicDemo2 {
+                    public static void main(String[] args) {
+                        Dad d = new Kid();
+                //		System.out.println(d.num); // 报错，如果父类没有成员变量num，会报错
+                //		System.out.println(d.num); // 输出:20   如果父类有成员变量num,子类也有,输出父类的变量  
+                //		d.method(); // 输出:"子类成员方法"
+                        d.function(); // 输出: "父类静态方法"   使用变量去调用静态方法，其实相当于用变量类型的类名去掉用
+                    }
+                }
+
+                class Dad{
+                    int num = 20;
+                    
+                    public void method(){
+                        System.out.println("父类成员方法");
+                    }
+                    
+                    public static void function(){
+                        System.out.println("父类静态方法");
+                    }
+                }
+
+                class Kid extends Dad{
+                    int num = 10;
+                    
+                    public void method(){
+                        System.out.println("子类成员方法");
+                    }
+                    
+                    public static void function(){
+                        System.out.println("子类静态方法");
+                    }
+                }
+
+##  11.多态中的向上转型和向下转型
+        <1>.引用类型之间的转换
+                {1}.向上转型(自动)
+                        由小到大(子类型转换成父类型)
+                {2}.向下转型(强制)
+                        由大到小
+
+        <2>.基本数据类型的转换
+                {1}.自动类型转换
+                        由小到大
+                        byte short char ==> int ==> long ==> float ==> double
+                {2}.强制类型转换
+                        由大到小
+
+        <3>.具体代码如下:
+                public class polymorphicDemo3 {
+                    public static void main(String[] args) {
+                        Animal2 a = new Dog(); // 向上转型
+                //		a.eat(); // 输出:"吃东西"
+                        
+                //		Dog d = a; // 报错，通俗举例: 狗是动物，动物是狗就错了
+                        
+                        Dog d = (Dog)a; // 向下转型
+                        d.eat(); // 输出: "补钙"
+                    }
+                }
+
+                class Animal2{
+                    public void eat(){
+                        System.out.println("吃东西");
+                    }
+                }
+
+                class Dog extends Animal2{
+                    @Override
+                    public void eat(){
+                        System.out.println("补钙");
+                    }
+                }
+
+##  12.多态的优缺点
+        <1>.优点:
+                可以提高可维护性(多态前提保证的)，提高代码的可拓展性
+
+        <2>.缺点:
+                无法直接访问子类持有的成员
+
+        <3>.举例:
+                public class polymorphicDemo4 {
+                    public static void main(String[] args) {
+                        MiFactory factory = new MiFactory();
+                        factory.createPhone(new MiNote()); // 输出："打电话"
+                        factory.createPhone(new RedMi());
+                    }
+                }
+
+                class MiFactory {
+                    /*public void createPhone(MiNote mi){
+                        mi.call();
+                    }
+                    
+                    public void createPhone(RedMi mi){
+                        mi.call();
+                    }*/
+                    public void createPhone(Phone p){
+                        p.call();
+                    }
+                }
+
+                interface Phone{
+                    public abstract void call();
+                }
+
+                // 小米note
+                class MiNote implements Phone{
+                    public void call(){
+                        System.out.println("小米note打电话");
+                    }
+                }
+
+                // 红米打电话
+                class RedMi implements Phone{
+                    public void call(){
+                        System.out.println("红米打电话");
+                    }
+                }
