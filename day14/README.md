@@ -26,3 +26,23 @@
                         ArrayList al = new ArrayList();
                     }
                 }
+
+##  3. 权限修饰符
+        <1>. 权限修饰符:
+                {1}.public	
+                        当前类，相同包下不同的类，不同包下的类
+
+                {2}.default		
+                        当前类，相同包下不同的类
+
+                {3}.private		
+                        当前类，相同包下不同的类
+
+                {4}.protected	
+                        当前类，相同包下不同的类
+
+        <2>.default:当前包下使用
+            protected:让子类对象使用
+
+        <3>.举例:
+                day14/code/包与修饰符
