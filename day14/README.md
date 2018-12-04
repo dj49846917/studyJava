@@ -46,3 +46,23 @@
 
         <3>.举例:
                 day14/code/包与修饰符
+
+##  4.修饰类:(y:yes)
+
+                    类              成员变量                成员方法                构造方法
+public              Y                   Y                       Y                   Y           
+default             Y                   Y                       Y                   Y
+protected                               Y                       Y                   Y
+private                                 Y                       Y                   Y
+abstract            Y                                           Y
+static                                  Y                       Y
+final               Y                   Y                       Y                   
+
+常见规则:
+        <1>.以后我们使用public来修饰类，如果一个文件有多个类，类名和文件名一样的类名，必须用public修饰，其他的类不能使用public修饰 
+
+        <2>.以后所有的成员变量都是用private修饰
+
+        <3>.以后所有的方法使用public修饰
+
+        <4>.以后所有的构造方法public修饰
