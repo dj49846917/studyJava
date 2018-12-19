@@ -129,3 +129,85 @@
 
         <6>.举例:
                 详细代码请看:day17/code/GenericDemo.java
+
+##  5.foreach
+        <1>.foreach: 
+                增强for循环，一般用于遍历集合或者数组
+
+        <2>.格式:
+                for(元素的类型变量 ： 集合或者数组对象){
+                    可以直接使用变量
+                }
+
+        <3>.注意： Exception in thread "main" java.util.ConcurrentModificationException
+ 		            在增强for循环中不能修改集合，否则会出现并发修改异常
+
+        <4>.举例:
+                public class ForEachDemo {
+                    public static void main(String[] args) {
+                        // 创建集合对象
+                        Collection<String> c = new ArrayList<String>();
+                        // 添加元素
+                        c.add("hello");
+                        c.add("world");
+                        c.add("java");
+                        
+                        // 增强for循环遍历集合
+                //		method(c);
+                        
+                        for (String string : c) {
+                            c.add("android");
+                            System.out.println(string); // 报错
+                        }
+                    }
+
+                    private static void method(Collection<String> c) {
+                        for(String s : c){
+                            System.out.println(s.toUpperCase());
+                        }
+                    }
+                }
+
+##  6.数据结构：（数组） int[] arr = {1,2,3,4,5}
+        <1>.数组的特点:
+                {1}.数组的长度一旦定义则不可改变
+                
+                {2}.数组中的元素都有整数索引
+
+                {3}.数组只能存储同一类型的数据
+
+                {4}.数组即可以存储基本数据类型，也可以存储引用数据类型
+
+                {5}.查找快，增删慢
+
+        <2>.如何获取元素?
+                可以通过索引获取，arr[2]
+
+        <3>.在元素3后面添加一个新的元素8，怎么办？
+                {1}.创建一个新的数组，长度是原来数组长度+1
+                {2}.遍历原先数组，并插入到新的数组当中
+                {3}.当碰到元素3的时候,在元素3后面添加新的元素8
+                {4}.最后把剩余的元素添加到元素8后面即可
+
+
+##  7.数据结构:(链表)
+        <1>.链表： 由链子链接起来的一堆结点
+        
+        <2>.结点: 地址值，值，下一个结点地址值  1,2,3,4,5
+
+        <3>.要在节点2后面添加一个新的结点8？
+                只能遍历链表，然后一个一个查看
+
+        <4>.要在节点2后面添加一个新的结点8？
+                把结点2的下一个结点地址值修改为新结点8的地址值，把新结点8的下一个地址值改为0x0033
+
+        <5>.特点:
+                查询慢，增删快
+
+##  8.数据结构:(栈)
+        <1>.特点:
+                先进后出（弹夹）
+
+##  9.数据结构: (队列)
+        <1>.特点:
+                先进先出（排队）
