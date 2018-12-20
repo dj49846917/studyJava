@@ -211,3 +211,58 @@
 ##  9.数据结构: (队列)
         <1>.特点:
                 先进先出（排队）
+
+##  10.List类
+        <1>.List的特点:
+                {1}.有序的(存储和读取的顺序是一样的)
+                {2}.有整数序列
+                {3}.允许重复的
+
+        <2>.特有功能:
+                {1}.void add(int index, E element): 增加
+                {2}.E get(int index): 根据索引获取
+                {3}.E remove(int index)： 删除并返回指定元素
+                {4}.E set(int index,E element): 根据索引修改指定元素
+
+        <3>.举例:
+                public class ListDemo {
+                    public static void main(String[] args) {
+                        List<String> list = new ArrayList<String>();
+                        
+                        // void add(int index, E element): 添加
+                        list.add(0, "hello");
+                        list.add(0,"world");
+                        System.out.println(list); // 输出: [world, hello]
+                        list.add(1, "java");
+                        System.out.println(list); // 输出: [world, java, hello]
+                        
+                        // E get(int index) : 根据索引返回元素
+                //		method(list);
+                        
+                        // E remove(int index) : 删除指定的元素并返回
+                        System.out.println(list.remove(2)); // 输出: hello
+                        System.out.println(list); // 输出: [world, java]
+                        
+                        // E set(int index,E element): 根据索引修改指定元素
+                        list.set(0, "php");
+                        System.out.println(list); // 输出:[php, java]
+                    }
+
+                    private static void method(List<String> list) {
+                        System.out.println(list.get(0)); // 输出: world
+                        System.out.println(list.get(1)); // 输出: java
+                        System.out.println(list.get(3)); // 输出: 报错
+                    
+                        for(String item : list){
+                            System.out.println(item);
+                        }
+                    }
+                }
+
+##  11.练习: 
+        <1>.定义一个方法，返回指定列表中指定元素的索引位置
+
+        <2>.判断元素是否存在
+
+        <3>.具体代码请看: 
+                day17/code/ListTest.kava
