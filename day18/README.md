@@ -1,5 +1,5 @@
 # Set与map
-## 1.Set类
+## 1.Set
         <1>.需求：使用HashSet存储字符串并遍历
 
         <2>.set集合的特点:
@@ -154,3 +154,69 @@
                             list.add(4);
                             Collections.swap(list, 0, 1);
                             System.out.println(list);
+
+##  4.练习
+		<1>.模拟斗地主发牌
+				详细代码请看day18/code/CollectionsTest.java
+
+##  5.Map
+		<1>.概念:
+				将键映射到值的对象。一个映射不能包含重复的键；每个键最多只能映射到一个值
+
+		<2>.Map和Collections的区别:
+				{1}.Map: 是一个双列集合，常用于处理有对应关系的数据，key是不可以重复的，我们也称之为是夫妻对关系
+				{2}.Collections: 是单列集合，Collection有不同的子体系，有的允许重复有索引有序，有的不允许重复且无序，我们称之为单身汉集合
+
+##  6.Map的常用API
+		<1>.映射功能:
+				{1}.V put(K key, V value): 就是将key映射到value,如果key存在，则覆盖value,并将原来的value返回
+					
+					1).举例:
+						Map<String,String> map = new HashMap<String,String>();
+						System.out.println(map.put("001", "张三")); // 输出: null
+						System.out.println(map.put("002", "李四")); // 输出: null
+						System.out.println(map.put("001", "王五")); // 输出: 张三
+
+		<2>.获取功能:
+				{1}.V get(Object key): 根据指定的Key返回对应的value
+					1).举例:
+							System.out.println(map.get("001")); // 输出: 王五
+							System.out.println(map.get("006")); // 输出: null
+
+				{2}.int size(): 返回对应关系的个数
+					1).举例:
+							System.out.println(map.size()); // 输出: 2
+
+		<3>.判断功能:
+				{1}.boolean containsKey(Object key): 判断指定的key是否存在
+					1).举例:
+							System.out.println(map.containsKey("001")); // 输出: true
+							System.out.println(map.containsKey("003")); // 输出: false
+
+				{2}.boolean containsValue(Object value): 判断指定的value是否存在
+					1).举例:
+							System.out.println(map.containsValue("001")); // 输出: false
+							System.out.println(map.containsValue("张三")); // 输出: false
+							System.out.println(map.containsValue("李四")); // 输出: true
+
+				{3}.boolean isEmpty(): 判断map是否为空
+					1).举例:
+							System.out.println(map.isEmpty()); // 输出: true
+
+		<4>.删除功能:
+				{1}.void clear(): 清空所有的对应关系
+					1).举例:
+							map.clear();
+
+				{2}.V remove(Object key): 根据指定的key删除对应关系，并返回key所对应的值，如果没有删除成功则返回null;
+					1).举例:
+							System.out.println(map.remove("001")); // 输出: 王五
+							System.out.println(map.remove("005")); // 输出: null
+
+		<5>.遍历功能:
+				{1}.Set<Map.Entry<K,V>> entrySet()
+				{2}.Set<K> keySet()
+				{3}.Collection<V> values()
+
+		<6>.具体代码请参考:
+				day18/code/MapDemo2.java
