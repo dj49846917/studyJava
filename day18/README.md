@@ -215,8 +215,74 @@
 
 		<5>.遍历功能:
 				{1}.Set<Map.Entry<K,V>> entrySet()
-				{2}.Set<K> keySet()
-				{3}.Collection<V> values()
+
+				{2}.Set<K> keySet(): 以Set的形式返回所有的key  (key不允许重复，所以返回的是set)
+                        1).举例:
+                                Set<String> keys = map.keySet();
+                                for(String item : keys){
+                                    System.out.println(item);
+                                }
+
+				{3}.Collection<V> values(): 以Collection的形式返回所有的value (values是允许重复的)
+                        1).举例:
+                                Collection<String> values = map.values();
+                                for(String item : values){
+                                    System.out.println(item);
+                                }
 
 		<6>.具体代码请参考:
 				day18/code/MapDemo2.java
+                day18/code/MaoDemo3.java
+
+##  7.map的遍历
+        <1>.方式一:
+                代码请看:
+                    day18/code/MapDemo4.java
+
+        <2>.方式二:
+                代码请看:
+                    day18/code/MapDemo5.java
+
+        <3>.具体代码如下:
+                public class MapDemo6 {
+                    public static void main(String[] args) {
+                //		method();
+                //		method2();
+                    }
+
+                    private static void method2() {
+                        Map<String,String> map = new HashMap<String,String>();
+                        map.put("001", "张三");
+                        map.put("002", "李四");
+                        map.put("003", "王五");
+                        Set<Map.Entry<String, String>> entrys = map.entrySet();
+                        for(Map.Entry<String, String> item : entrys){
+                            System.out.println(item);
+                            String key = item.getKey();
+                            String value = item.getValue();
+                            System.out.println("学号:" + key + "---" + "姓名:" + value);
+                        }
+                    }
+
+                    private static void method() {
+                        Map<String, String> map = new HashMap<String, String>();
+                        map.put("001", "张三");
+                        map.put("002", "李四");
+                        map.put("003", "王五");
+                        Set<String> keys = map.keySet();
+                        for (String item : keys) {
+                            String value = map.get(item);
+                            System.out.println("学号:" + item + "---" + "姓名:" + value);
+                        }
+                    }
+                }
+
+##  8.练习:
+        <1>.使用HashMap存储数据并遍历(字符串作为key)
+                1).具体代码请参考: 
+                        day18/code/HashMapDemo.java
+
+        <2>.使用HashMap存储数据并遍历(自定义对象作为key)
+                1).具体代码请参考:
+                        day18/code/HashMapDemo2.java
+
