@@ -2,27 +2,37 @@
 记录每天java的学习
 
 # 目录：
-##  ![day01](https://github.com/dj49846917/studyJava/blob/master/day01/README.md)
+##  [day01](https://github.com/dj49846917/studyJava/blob/master/day01/README.md)
         |
         |---- 1.常用dos命令
         |
         |---- 2.环境安装
+            |---- 2.1 JDK的下载和安装
+            |---- 2.2 helloworld案例的编写及运行
+            |---- 2.3 helloworld案例常见问题
+            |---- 2.4 Notepad软件的安装与使用
         |
         |---- 3.注释
         |
         |---- 4.关键字
         |
         |---- 5.常量
+            |---- 5.2 常量分类
         |
         |---- 6.变量
         |
         |---- 7.计算机存储单元
         |
         |---- 8.数据类型
+            |---- 8.2 数据类型分类
+            |---- 8.3 基本数据类型(4种8类)
         |
         |---- 9.类型转换
+            |---- 9.2 类型转换分类
+            |---- 9.3 隐式转换
+            |---- 9.4 强制转换
 
-##  ![day02(eclipse的安装与运行)](https://github.com/dj49846917/studyJava/blob/master/day02/README.md)
+##  [day02(eclipse的安装与运行)](https://github.com/dj49846917/studyJava/blob/master/day02/README.md)
         |
         |---- 1.安装
         |
@@ -35,38 +45,48 @@
         |---- 5.eclipse中项目的删除和导入
         |
         |---- 6.运算符
+            |---- 6.3 运算符分类
+                |---- 6.3.1 算术运算符
+                |---- 6.3.2 赋值运算符
+                |---- 6.3.3 关系运算符
+                |---- 6.3.4 三元运算符
 
-##  ![day03](https://github.com/dj49846917/studyJava/blob/master/day03/README.md)
+##  [day03](https://github.com/dj49846917/studyJava/blob/master/day03/README.md)
         |
         |---- 1.流程控制语句(if,switch,for,while,do ... while)
 
-##  ![day04](https://github.com/dj49846917/studyJava/blob/master/day04/README.md) 
+##  [day04](https://github.com/dj49846917/studyJava/blob/master/day04/README.md) 
         |
         |---- 1. 随机数(Random)
         |
         |---- 2.数组
+            |---- 2.4 两个常见小问题
         |
         |---- 3.JAVA中的内存分配
 
-##  ![day05](https://github.com/dj49846917/studyJava/blob/master/day05/README.md) 
+##  [day05](https://github.com/dj49846917/studyJava/blob/master/day05/README.md) 
         |
         |---- 1.方法
 
-##  ![day06](https://github.com/dj49846917/studyJava/blob/master/day06/README.md) 
+##  [day06](https://github.com/dj49846917/studyJava/blob/master/day06/README.md) 
         |
         |---- 1.断点调试
 
-##  ![day07(面向对象)](https://github.com/dj49846917/studyJava/blob/master/day07/README.md)
+##  [day07(面向对象)](https://github.com/dj49846917/studyJava/blob/master/day07/README.md)
         |
         |---- 1.面向对象
+            |---- 1.2 特点 
         |
         |---- 2.类
+            |---- 2.7 成员变量与局部变量的区别
+            |---- 2.8 私有变量：private
         |
         |---- 3.this
         |
         |---- 4.构造方法
+            |---- 4.4 构造方法注意事项
 
-##  ![day08](https://github.com/dj49846917/studyJava/blob/master/day08/README.md)
+##  [day08](https://github.com/dj49846917/studyJava/blob/master/day08/README.md)
         |
         |---- 1.java手册的使用
         |
@@ -84,7 +104,7 @@
         |
         |---- 8.StringBuilder类
 
-##  ![day09](https://github.com/dj49846917/studyJava/blob/master/day09/README.md)
+##  [day09](https://github.com/dj49846917/studyJava/blob/master/day09/README.md)
         |
         |---- 1.对象数组
         |
@@ -92,7 +112,7 @@
         |
         |---- 3.综合练习
 
-##  ![day10](https://github.com/dj49846917/studyJava/blob/master/day10/README.md)
+##  [day10](https://github.com/dj49846917/studyJava/blob/master/day10/README.md)
         |
         |---- 1. IO流概述和分类 
         |
@@ -110,7 +130,7 @@
         |
         |---- 8. IO流的练习
 
-##  ![day11](https://github.com/dj49846917/studyJava/blob/master/day11/README.md)
+##  [day11](https://github.com/dj49846917/studyJava/blob/master/day11/README.md)
         |
         |---- 1. static静态
         |
@@ -138,7 +158,7 @@
         |
         |---- 13.this和super的区别
 
-##  ![day12](https://github.com/dj49846917/studyJava/blob/master/day12/README.md)
+##  [day12](https://github.com/dj49846917/studyJava/blob/master/day12/README.md)
         |
         |---- 1.抽象类abstract
         |
@@ -150,7 +170,7 @@
         |
         |---- 5.练习
 
-##  ![day13](https://github.com/dj49846917/studyJava/blob/master/day13/README.md)
+##  [day13](https://github.com/dj49846917/studyJava/blob/master/day13/README.md)
         |
         |---- 1.接口的概述
         |
@@ -176,7 +196,7 @@
         |
         |---- 12.多态的优缺点
 
-##  ![day14](https://github.com/dj49846917/studyJava/blob/master/day14/README.md)
+##  [day14](https://github.com/dj49846917/studyJava/blob/master/day14/README.md)
         |
         |---- 1.包的特点
         |
@@ -186,7 +206,7 @@
         |
         |---- 4.修饰类:(y:yes)
 
-##  ![day15](https://github.com/dj49846917/studyJava/blob/master/day15/README.md)
+##  [day15](https://github.com/dj49846917/studyJava/blob/master/day15/README.md)
         |
         |---- 1.内部类
         |
@@ -196,7 +216,7 @@
         |
         |---- 4.匿名内部类:
 
-##  ![day16(常用API)](https://github.com/dj49846917/studyJava/blob/master/day16/README.md)
+##  [day16(常用API)](https://github.com/dj49846917/studyJava/blob/master/day16/README.md)
         |
         |---- 1. Object.toString 
         |
@@ -218,7 +238,7 @@
         |
         |---- 10.正则表达式
 
-##  ![day17(泛型和数据结构)](https://github.com/dj49846917/studyJava/blob/master/day17/README.md)
+##  [day17(泛型和数据结构)](https://github.com/dj49846917/studyJava/blob/master/day17/README.md)
         |
         |---- 1.Collection类
         |
@@ -242,7 +262,7 @@
         |
         |---- 11.练习 
 
-##  ![day18(Set与map)](https://github.com/dj49846917/studyJava/blob/master/day17/README.md)
+##  [day18(Set与map)](https://github.com/dj49846917/studyJava/blob/master/day17/README.md)
         |
         |---- 1.Set
         |
