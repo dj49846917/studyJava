@@ -344,7 +344,7 @@
         |
         |---- 11.练习 
 
-##  [day18(Set与map)](https://github.com/dj49846917/studyJava/blob/master/day17/README.md)
+##  [day18(Set与map)](https://github.com/dj49846917/studyJava/blob/master/day18/README.md)
         |
         |---- 1.Set
             |---- 1.2 set集合的特点
@@ -387,3 +387,46 @@
         |---- 7.map的遍历
         |
         |---- 8.练习
+
+##  [day19(异常处理)](https://github.com/dj49846917/studyJava/blob/master/day19/README.md)
+        |
+        |---- 1. 异常的介绍
+        |
+        |---- 2. 异常的处理方式
+            |---- 2.1 try...catch语句
+        |
+        |---- 3.处理多个异常
+        |
+        |---- 4.Throwable的常用方法
+            |---- 4.1 String getMessage(): 原因
+            |---- 4.2 String toString(): 类型和原因
+            |---- 4.3 void printStackTrace()： 类型、原因和位置
+            |---- 4.4 快捷键
+        |
+        |---- 5. finally的用法
+        |
+        |---- 6. 异常的分类
+        |
+        |---- 7.自定义异常
+            |---- 7.2 自定义异常的两种方式
+                |---- 7.2.1 运行时
+                |---- 7.2.2 编译时
+        |
+        |---- 8.递归
+            |---- 8.2 练习
+        |
+        |----
+        |
+        |----
+        |
+        |----
+        |
+        |----
+        |
+        |----
+        |
+        |----
+        |
+        |----
+        |
+        |----
