@@ -35,6 +35,9 @@ import java.io.File;
  * 			boolean isDirectory()
  * 			boolean isFile()
  * 
+ * 		修改功能:
+ * 			boolean renameTo(File dest)
+ * 
  */
 public class FileDemo {
 	public static void main(String[] args) {
