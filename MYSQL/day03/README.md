@@ -36,3 +36,153 @@
 ![解决办法](https://raw.githubusercontent.com/dj49846917/studyJava/master/MYSQL/day03/%E8%A7%A3%E9%87%8A%E5%9B%BE/solveProblem.png)
 ![解决办法2](https://raw.githubusercontent.com/dj49846917/studyJava/master/MYSQL/day03/%E8%A7%A3%E9%87%8A%E5%9B%BE/solveProblem2.png)
                 
+## 3.删除数据
+        <1>.格式:
+                delete from 表名 [where条件]
+
+        <2>.举例:
+                delete from student where userName='lili';
+![删除数据](https://raw.githubusercontent.com/dj49846917/studyJava/master/MYSQL/day03/%E8%A7%A3%E9%87%8A%E5%9B%BE/deleteData.png)
+
+        <3>.delete from student;    如果没有指定where条件，会一条条的删除数据，直到清空
+
+        <4>.面试问题: 1.delete和truncate删除数据的区别？
+                            答: {1}.delete: DML,一条一条的删除数据
+                                {2}.truncate: DDL，先删除表再重建表
+                     
+                     2.哪个的执行效率高?
+                            答: 如果数据少，使用delete高效，如果数据多，truncate高效。
+
+## 4.更新表数据
+        <1>.格式:
+                update 表名 set 列名=列的值，列名2=列2的值 [where条件];
+
+        <2>.举例:
+                update student set userName='张三',age=30 where userId=001;
+![更新数据](https://raw.githubusercontent.com/dj49846917/studyJava/master/MYSQL/day03/%E8%A7%A3%E9%87%8A%E5%9B%BE/updateData.png)
+
+        <3>.如果不加where语句，则所有数据都会被修改
+                update student set age=40;
+![批量更新数据](https://raw.githubusercontent.com/dj49846917/studyJava/master/MYSQL/day03/%E8%A7%A3%E9%87%8A%E5%9B%BE/updateData2.png)
+
+##  5.查询数据
+        <1>.格式:
+                select [distinct] [*] [列名，列名2] from 表名 [where条件]
+
+        <2>.举例: 创建商品分类和商品表并查询
+                {1}.商品分类: 
+                        1).分类的ID
+                        2).分类名称
+                        3).分类描述
+
+                        4).具体实现:
+                            // 创建表
+                            create table category(
+                                id int primary key auto_increment, // auto_increment:自动增长
+                                name varchar(10),
+                                scription var char(30)
+                            );
+                            
+                            // 插入数据
+                            insert into category values(null,'手机数码','电子产品,黑马生产');
+                            insert into category values(null,'鞋靴箱包','江南皮鞋厂倾情打造');
+                            insert into category values(null,'香烟酒水','黄鹤楼,茅台,二锅头');
+                            insert into category values(null,'酸奶饼干','娃哈哈,蒙牛');
+                            insert into category values(null,'馋嘴零食','瓜子花生,辣条');
+
+                {2}. 查询所有数据
+                        select * from category;
+![查询所有数据](https://raw.githubusercontent.com/dj49846917/studyJava/master/MYSQL/day03/%E8%A7%A3%E9%87%8A%E5%9B%BE/searchData.png)
+
+                {3}.查看指定的数据
+                        select name from category; // 只返回name
+![查询返回指定数据](https://raw.githubusercontent.com/dj49846917/studyJava/master/MYSQL/day03/%E8%A7%A3%E9%87%8A%E5%9B%BE/searchData2.png)
+
+                {4}.所有商品
+                        1).商品Id
+                        2).商品名称
+                        3).商品的价格
+                        4).生产日期
+                        5).商品分类Id       商品与商品分类: 所属关系
+
+                        6).具体实现:
+                            // 创建表
+                            create Table product(
+                                goodsId int primary key auto_increment,
+                                goodsName varchar(30),
+                                price double,
+                                dateTime timestamp,
+                                categoryId int
+                            );
+
+                            // 插入数据
+                            insert into product values(null,'小米9',2699,null,1);
+                            insert into product values(null,'iphoneXmax',8999,null,1);
+                            insert into product values(null,'香奈儿',15999,null,2);
+                            insert into product values(null,'老村长',88,null,3);
+                            insert into product values(null,'劲酒',35,null,3);
+                            insert into product values(null,'小熊饼干',1,null,4);
+                            insert into product values(null,'卫龙辣条',1,null,5);
+                            insert into product values(null,'旺旺雪饼',5,null,5);
+
+                {5}.简单查询:
+                        1).查询所有的商品
+                                select * from product;
+                        
+                        2).查询商品名称和商品价格
+                                select goodsName, price from product;
+
+                        3).别名查询 (as关键字, as可以省略)
+                                [1].表别名:
+                                        select p.goodsName, p.price from product p; (p是别名，也可以看成是常量)
+
+                                [2].列别名:
+                                        select goodsName as 商品名称, price as 商品价格 from product;
+
+                                        // 省略as，完全一样
+                                        select goodsName 商品名称, price 商品价格 from product;
+![列别名之前](https://raw.githubusercontent.com/dj49846917/studyJava/master/MYSQL/day03/%E8%A7%A3%E9%87%8A%E5%9B%BE/aliasBefor.png)  
+
+![列别名之后](https://raw.githubusercontent.com/dj49846917/studyJava/master/MYSQL/day03/%E8%A7%A3%E9%87%8A%E5%9B%BE/aliasAfter.png)
+                        
+                        4).去掉重复的值(distinct)
+                            需求: 查询所有商品的价格
+                                select price from product;
+                            // 去重
+                                select distinct price from product;
+
+                        5). select运算查询
+                                select *, price*0.8 from product;
+                                select *, price*0.8 as 折后价 from product;
+![select运算前](https://raw.githubusercontent.com/dj49846917/studyJava/master/MYSQL/day03/%E8%A7%A3%E9%87%8A%E5%9B%BE/calculateBefore.png)
+
+![select运算后](https://raw.githubusercontent.com/dj49846917/studyJava/master/MYSQL/day03/%E8%A7%A3%E9%87%8A%E5%9B%BE/calculateAfter.png)
+                                        
+                {6}.条件查询:(where关键字)
+                        1).查询商品价格>60元的所有商品信息
+                                select * from product where price>60;
+
+                        2).where后面的条件写法
+                                [1].关系运算符: > >= < <= != <>
+                                    <>和!=是一样的，都是不等于,前者是标准的sql语法，后者是非标准的
+
+                                [2].逻辑运算符: and, or, not
+
+                        3).查询商品价格不等于88元的所有商品信息
+                                select * from product where price <> 88;
+
+                        4).查询商品价格在10到100之间的商品信息
+                                select * from product where price >10 and price < 100;
+
+                            或者使用 between...and...
+                                select * from product where price between 10 and 100;
+
+                        5).查询商品价格小于100或者大于900的所有商品
+                                select * from product where price >900 or price < 100;
+
+
+
+
+
+                
+                     
