@@ -80,7 +80,7 @@
                             create table category(
                                 id int primary key auto_increment, // auto_increment:自动增长
                                 name varchar(10),
-                                scription var char(30)
+                                scription varchar(30)
                             );
                             
                             // 插入数据
@@ -179,6 +179,102 @@
 
                         5).查询商品价格小于100或者大于900的所有商品
                                 select * from product where price >900 or price < 100;
+
+                {7}.模糊查询: (like，in)
+                        like:   1). _: 代表的是一个字符
+                                    %：代表的是多个字符
+
+                                2).举例:
+                                    [1].查询出名字带有饼的所有商品
+                                            select * from product where goodsName like '%饼%';
+![模糊查询like(%)](https://raw.githubusercontent.com/dj49846917/studyJava/master/MYSQL/day03/%E8%A7%A3%E9%87%8A%E5%9B%BE/searchData3.png)
+
+                                    [2]. 查询第二个名字是熊的所有商品
+                                            select * from product where goodsName like '_熊%';
+![模糊查询like(_)](https://raw.githubusercontent.com/dj49846917/studyJava/master/MYSQL/day03/%E8%A7%A3%E9%87%8A%E5%9B%BE/searchData4.png)
+
+                        in: 在某个范围内获取值
+                                1).举例:
+                                    [1].查询出商品分类ID在1,4,5里面所有的商品
+                                            select * from product where categoryId in (1,4,5);
+![模糊查询in](https://raw.githubusercontent.com/dj49846917/studyJava/master/MYSQL/day03/%E8%A7%A3%E9%87%8A%E5%9B%BE/searchData5.png)
+
+                {8}.排序查询: order by
+                        1).asc: ascend升序(默认)    
+                        2).desc: descend降序
+
+                        3).举例:
+                                [1].查询所有商品，按照价格升序排序
+                                        select * from product order by price;
+![升序排序asc](https://raw.githubusercontent.com/dj49846917/studyJava/master/MYSQL/day03/%E8%A7%A3%E9%87%8A%E5%9B%BE/searchData6.png)
+
+                                [2].查询所有商品，按照价格降序排序
+                                        select * from product oreder by price desc;
+![升序排序desc](https://raw.githubusercontent.com/dj49846917/studyJava/master/MYSQL/day03/%E8%A7%A3%E9%87%8A%E5%9B%BE/searchData7.png)
+
+                                [3].查询名称有'小'的商品,按价格升序
+                                        select * from product where goodsName like '%小%' order by price;
+![复合查询](https://raw.githubusercontent.com/dj49846917/studyJava/master/MYSQL/day03/%E8%A7%A3%E9%87%8A%E5%9B%BE/searchData8.png)
+
+                {9}.聚合函数
+                        1).sum(): 求和
+                        2).avg(): 求平均值
+                        3).count(): 统计数量
+                        4).max(): 最大值
+                        5).min(): 最小值
+
+                        6).举例:
+                                [1].获取所有商品价格的总和
+                                        select sum(price) from product;
+![sum()求和](https://raw.githubusercontent.com/dj49846917/studyJava/master/MYSQL/day03/%E8%A7%A3%E9%87%8A%E5%9B%BE/searchData9.png)
+
+                                [2].获取所有商品的平均价格
+                                        select avg(price) from product;
+![avg()求平均值](https://raw.githubusercontent.com/dj49846917/studyJava/master/MYSQL/day03/%E8%A7%A3%E9%87%8A%E5%9B%BE/searchData10.png)
+
+                                [3].获取所有商品的个数
+                                        select count(*) from product;
+![count()求总数](https://raw.githubusercontent.com/dj49846917/studyJava/master/MYSQL/day03/%E8%A7%A3%E9%87%8A%E5%9B%BE/searchData11.png)
+
+                        7).注意： where条件后面不能接聚合函数
+                        --------  子查询 --------------------
+                                [1].查出商品价格大于平均价格的所有商品
+                                
+                                错误写法:
+                                    select * from product where price > avg(price);
+
+                                正确写法:
+                                    select * from product where price > (select avg(price) from product);
+![(子查询](https://raw.githubusercontent.com/dj49846917/studyJava/master/MYSQL/day03/%E8%A7%A3%E9%87%8A%E5%9B%BE/searchData12.png)
+
+                {10}.分组查询: group by
+                        1)举例:
+                            [1].根据categoryId字段分组，分组后统计商品的个数
+                                    select categoryId, count(*) from product group by categoryId;
+![分组查询](https://raw.githubusercontent.com/dj49846917/studyJava/master/MYSQL/day03/%E8%A7%A3%E9%87%8A%E5%9B%BE/searchData13.png)
+
+                            [2].根据categoryId分组，分组统计每组商品的平均价格，并且商品平均价格>60
+                                    select categoryId, count(*) from product group by categoryId having avg(price) > 60;
+![分组查询(having)](https://raw.githubusercontent.com/dj49846917/studyJava/master/MYSQL/day03/%E8%A7%A3%E9%87%8A%E5%9B%BE/searchData13.png)
+
+                        2).注意:
+                                [1].having 关键字，可以接聚合函数，出现在分组之后
+                                [2].where 关键字，不可以接聚合函数，出现在分组之前
+
+## 6.sql的编写顺序和执行顺序
+        <1>.编写顺序
+                S...F...W...G...H...O
+                select...from...where...group by...having...order by
+
+        <2>.执行顺序
+                F...W...G...H...S...O
+                from...where...group by...having...select...order by
+
+                    
+
+                
+
+
 
 
 
