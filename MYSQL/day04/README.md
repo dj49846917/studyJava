@@ -216,4 +216,171 @@
 
         内连接和外连接的区别:
                 内连接是两张表的交集，外连接是两张表的并集
+
+##  7.分页查询(limit)
+        关键字: limit
+            第一个参数: 起始索引(当前页)  页码从1开始(index)
+            起始索引通过计算： startIndex = (index-1)*3
+
+            第二个参数: 每页的数量
+
+        select * from product limit 3,3;
+
+## 8.练习:
+        <1>.查询出(商品名称，商品分类名称)信息
+            方式1：内连接:
+                select p.goodsName, c.name from product p inner join category c on p.categoryId = c.id;
+
+            方式2：子查询:
+                select p.goodsName, (select name from category c where p.categoryId = c.id) name from product p;
+
+        <2>.查询分类名称为手机数码的所有商品
+                select * from product where categoryId = (select id from category where name='手机数码');
+
+## 9.练习2:
+        1.建表: 员工信息表
+        CREATE TABLE emp(
+            empno INT,
+            ename VARCHAR(50),
+            job VARCHAR(50),
+            mgr	INT,
+            hiredate DATE,
+            sal	DECIMAL(7,2),
+            comm DECIMAL(7,2),
+            deptno INT
+        );
+
+        INSERT INTO emp values(7369,'SMITH','CLERK',7902,'1980-12-17',800,NULL,20);
+        INSERT INTO emp values(7499,'ALLEN','SALESMAN',7698,'1981-02-20',1600,300,30);
+        INSERT INTO emp values(7521,'WARD','SALESMAN',7698,'1981-02-22',1250,500,30);
+        INSERT INTO emp values(7566,'JONES','MANAGER',7839,'1981-04-02',2975,NULL,20);
+        INSERT INTO emp values(7654,'MARTIN','SALESMAN',7698,'1981-09-28',1250,1400,30);
+        INSERT INTO emp values(7698,'BLAKE','MANAGER',7839,'1981-05-01',2850,NULL,30);
+        INSERT INTO emp values(7782,'CLARK','MANAGER',7839,'1981-06-09',2450,NULL,10);
+        INSERT INTO emp values(7788,'SCOTT','ANALYST',7566,'1987-04-19',3000,NULL,20);
+        INSERT INTO emp values(7839,'KING','PRESIDENT',NULL,'1981-11-17',5000,NULL,10);
+        INSERT INTO emp values(7844,'TURNER','SALESMAN',7698,'1981-09-08',1500,0,30);
+        INSERT INTO emp values(7876,'ADAMS','CLERK',7788,'1987-05-23',1100,NULL,20);
+        INSERT INTO emp values(7900,'JAMES','CLERK',7698,'1981-12-03',950,NULL,30);
+        INSERT INTO emp values(7902,'FORD','ANALYST',7566,'1981-12-03',3000,NULL,20);
+        INSERT INTO emp values(7934,'MILLER','CLERK',7782,'1982-01-23',1300,NULL,10);
+        INSERT INTO emp values(7981,'MILLER','CLERK',7788,'1992-01-23',2600,500,20);
+
+        2.建表: 部门信息表
+        CREATE TABLE dept(
+            deptno		INT,
+            dname		varchar(14),
+            loc		varchar(13)
+        );
+
+        INSERT INTO dept values(10, 'ACCOUNTING', 'NEW YORK');
+        INSERT INTO dept values(20, 'RESEARCH', 'DALLAS');
+        INSERT INTO dept values(30, 'SALES', 'CHICAGO');
+        INSERT INTO dept values(40, 'OPERATIONS', 'BOSTON');
+
+###   1.基本查询
+            <1>.所有员工的信息
+                    select * from emp;
+
+            <2>.薪资大于等于1000并且小于等于2000的员工信息
+                    select * from emp where sal between 1000 and 2000;
+
+            <3>.从员工表中查询出所有的部门编号
+                    select deptno from emp;
+
+            <4>.查询出名字以A开头的员工的信息
+                    select * from emp where ename like 'A%';
+
+            <5>.查询出名字第二个字母是L的员工信息
+                    select * from emp where ename like '_L%';
+
+            <6>.查询出没有奖金的员工信息
+                    select * from emp where comm = 0 or comm = null;
+
+            <7>.所有员工的平均工资
+                    select avg(sal) from emp; 
+
+            <8>.所有员工的工资总和
+                    select sum(sal) from emp;
+
+            <9>.所有员工的数量
+                    select count(*) from emp;
+            
+            <10>.最高工资
+                    select max(sal) from emp;
+
+            <11>.最少工资
+                    select min(sal) from emp;
+
+            <12>.最高工资的员工信息
+                    select * from emp where sal = (select max(sal) from emp);
+
+            <13>.最低工资的员工信息
+                    select * from emp where sal = (select min(sal) from emp);
+
+### 2.分组查询
+            <1>.每个部门的平均工资
+                    select avg(sal) from emp group by deptno;
+
+### 3.子查询
+            1.单行子查询(> < >= <= = <>)
+                <1>.查询出高于10号部门的平均工资的员工信息
+                    select * from emp where sal > (select avg(sal) from emp where deptno = 10);
+
+            2.多行子查询(in  not in any all)    >any  >all
+                <2>.查询出比20号部门任何员工薪资高的员工信息
+                    select * from emp where sal > (select max(sal) from emp where deptno = 20);
+
+            3.多列子查询(实际使用较少)   in
+                <3>.和10号部门同名同工作的员工信息
+                    select * from emp where (ename,job) in (select ename,job from emp where deptno = 10) and deptno <> 10;
+
+            4.Select接子查询
+                <4>.获取员工的名字和部门的名字
+                    select e.ename, (select dname from dept d where d.deptno = e.deptno) from emp e;
+
+            5.from后面接子查询
+                <5>.查询emp表中经理信息
+                    select distinct mgr from emp;
+
+            6.where 接子查询
+                <6>.薪资高于10号部门平均工资的所有员工信息
+                    select * from emp where sal > (select avg(sal) from emp where deptno = 10);
+
+            7.having后面接子查询
+                <7>.有哪些部门的平均工资高于30号部门的平均工资
+                    select deptno, avg(sal) from emp group by deptno where sal > (select avg(sal) from empt where deptno = 30);
+
+            <8>.工资>JONES工资
+                    // select sal from emp where ename = 'JONES';
+                select * from emp where sal > (select sal from emp where ename = 'JONES');
+
+            <9>.查询与SCOTT同一个部门的员工
+                    // select deptno from emp where ename = 'SCOTT';
+                select ename from emp where deptno in (select deptno from emp where ename = 'SCOTT');
+
+            <10>.工资高于30号部门所有人的员工信息
+                    // select max(sal) from emp where deptno = 30;
+                select * from emp where sal > (select max(sal) from emp where deptno = 30);
+
+            <11>.查询工作和工资与MARTIN完全相同的员工信息
+                    select job,sal from emp where ename = 'MARTIN'; 
+                select * from emp where (job,sal) = (select job,sal from emp where ename = 'MARTIN');
+
+            <12>.有两个以上直接下属的员工信息
+
+            <13>.查询员工编号为7788的员工名称,员工工资,部门名称,部门地址
+                // select e.ename, e.sal, d.dname, d.loc from emp e inner join dept d on e.deptno = d.deptno where e.empno=7788;
+                SELECT ename,sal ,dname, loc FROM emp ,dept WHERE emp.deptno = dept.deptno AND empno=7788;
+
+### 4.综合案例
+    1. 查询出高于本部门平均工资的员工信息
+
+    2. 列出达拉斯加工作的人中,比纽约平均工资高的人
+
+    3. 查询7369员工编号,姓名,经理编号和经理姓名
+
+    4. 查询出各个部门薪水最高的员工所有信息
+    
+            
         
