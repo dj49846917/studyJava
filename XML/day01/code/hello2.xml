@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding="GBK" ?>
+<users>
+    <user id="1">
+        <name>张三</name>
+        <age>24</age>
+    </user>
+
+    <user id="2">
+        <name>李四</name>
+        <age>20</age>
+    </user>
+</users>
