@@ -161,3 +161,11 @@
         2. DOM4J： 一款非常优秀的解析器
         3. Jsoup: jsoup 是一款Java的HTML解析器，可直接解析某个URL地址，HTML文本内容。它提供了一套非常省力的API，可通过DOM，css以及类似于jquery的操作方法来取出和操作数据
         4. PULL： android操作系统内置的解析器，sax方式的
+
+    * Jsoup: jsoup 是一款Java的HTML解析器，可直接解析某个URL地址、HTML文本内容。它提供了一套非常省力的API，可通过DOM，CSS以及类似于jquery的操作方法来取出和操作数据
+        * 快速入门:
+            * 步骤:
+                1. 导入jar包
+                2. 获取Document对象
+                3. 获取对应的标签Element对象
+                4. 获取数据
