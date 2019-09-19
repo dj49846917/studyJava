@@ -65,7 +65,7 @@
 
         2).设置
             点击设置 ==> 首选项 ==> 新建 ==>默认语言和编码
-![nodepad的配置][https://raw.githubusercontent.com/dj49846917/studyJava/master/day01/%E8%A7%A3%E9%87%8A%E5%9B%BE/nodepad%E7%9A%84%E9%85%8D%E7%BD%AE.png]
+![nodepad的配置](https://raw.githubusercontent.com/dj49846917/studyJava/master/day01/%E8%A7%A3%E9%87%8A%E5%9B%BE/nodepad%E7%9A%84%E9%85%8D%E7%BD%AE.png)
 
     <5>.path环境变量的配置
         1).为什么要配置
