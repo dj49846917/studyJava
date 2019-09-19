@@ -84,6 +84,8 @@
 
       * <font color=#00ffff>简化部署: 将项目打包成一个war包，再将war包放置到webapps目录下</font>
         * <font color=#00ffff>war包会自动解压缩</font>
+
+      * ![方式一: ](https://raw.githubusercontent.com/dj49846917/studyJava/master/day01/%E8%A7%A3%E9%87%8A%E5%9B%BE/path1.png)
       
       * 访问: http://localhost:8080/hello/helloworld.html
 
@@ -92,8 +94,24 @@
         * docBase: 项目存放的路径
         * path: 虚拟目录
 
+      * ![方式二1: ](https://raw.githubusercontent.com/dj49846917/studyJava/master/day01/%E8%A7%A3%E9%87%8A%E5%9B%BE/path1.png)
+      
+      * ![方式二2: ](https://raw.githubusercontent.com/dj49846917/studyJava/master/day01/%E8%A7%A3%E9%87%8A%E5%9B%BE/path1.png)
+      
+      * ![方式二3: ](https://raw.githubusercontent.com/dj49846917/studyJava/master/day01/%E8%A7%A3%E9%87%8A%E5%9B%BE/path1.png)
+      
+      * 访问: http://localhost:8080/hehe/helloworld.html
+
     3. 在conf\Catalina\localhost创建任意名称的xml文件。在文件中编写<font color=#00ffff></Context docBase="D:\hello" /></font>
       * 虚拟目录: xml文件的名称
+
+      * ![方式三1: ](https://raw.githubusercontent.com/dj49846917/studyJava/master/day01/%E8%A7%A3%E9%87%8A%E5%9B%BE/path1.png)
+      
+      * ![方式三2: ](https://raw.githubusercontent.com/dj49846917/studyJava/master/day01/%E8%A7%A3%E9%87%8A%E5%9B%BE/path1.png)
+      
+      * ![方式三3: ](https://raw.githubusercontent.com/dj49846917/studyJava/master/day01/%E8%A7%A3%E9%87%8A%E5%9B%BE/path1.png)
+
+      * 访问: http://localhost:8080/bbb/helloworld.html
 
 # 静态项目和动态项目
 
