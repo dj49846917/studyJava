@@ -79,8 +79,8 @@
 
     * DTD:
         * 引入dtd文档到xml文档中
-            * 内部dtd: 将约束规则定义在xml文档中, [查看具体内容](https://github.com/dj49846917/studyJava/blob/master/day02/README.md)
-            * 外部dtd: 将约束的规则定义在外部的dtd文件中, [查看具体内容](https://github.com/dj49846917/studyJava/blob/master/day02/README.md)
+            * 内部dtd: 将约束规则定义在xml文档中, [查看具体内容](https://github.com/dj49846917/studyJava/blob/master/XML/day02/dtd/student2.xml)
+            * 外部dtd: 将约束的规则定义在外部的dtd文件中, [查看具体内容](https://github.com/dj49846917/studyJava/tree/master/XML/day02/dtd/student.dtd)
                 * 本地: \<!DOCTYPE 根标签名 SYSTEM "dtd文件的位置">
                 * 网络: \<!DOCTYPE 根标签名 PUBLIC "dtd文件名字" "dtd文件的url">
 ```
@@ -132,7 +132,7 @@
         2. 引入xsi前缀. xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         3. 引入xsd文件命名空间. xsi:schemaLocation="http://www.itcast.cn/xml student.xsd"
         4. 为每一个xsd约束声明一个前缀，作为标识 xmlns="http://www.itcast.cn/xml"
-        5. [查看具体内容](https://github.com/dj49846917/studyJava/blob/master/day02/README.md)
+        5. [查看具体内容](https://github.com/dj49846917/studyJava/tree/master/XML/day02/schema/student/xsd)
 
 ```
     <students  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
