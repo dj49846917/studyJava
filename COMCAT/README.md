@@ -122,3 +122,7 @@
             --  web.xml: web项目的核心配置文件   
             --  classes目录: 放置字节码文件的目录    
             --  lib目录: 放置依赖的jar包
+
+* IDEA集成Tomcat：
+
+  1. 打开idea, 左上角点开Run, 点击Edit Configurations, 找到Templates, 然后找到tomcat server,选择local点开，填入以下信息:
