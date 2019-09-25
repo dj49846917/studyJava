@@ -125,4 +125,13 @@
 
 * IDEA集成Tomcat：
 
-  1. 打开idea, 左上角点开Run, 点击Edit Configurations, 找到Templates, 然后找到tomcat server,选择local点开，填入以下信息:
+  * 打开idea, 左上角点开Run, 点击Edit Configurations, 找到Templates, 然后找到tomcat server,选择local点开，填入以下信息:
+  
+## IDEA与tomcat的相关配置
+    1. IDEA会为每一个tomcat部署的项目单独建立一份配置文件
+        * 查看控制台的log: Using CATALINA_BASE:   "C:\Users\ami\.IntelliJIdea2017.3\system\tomcat\_test"
+        
+    2. 工作空间项目   和   tomcat部署的web项目
+        * tomcat真正访问的是"tomcat部署的web项目"，"tomcat部署的web项目"对应着"工作空间项目"的web目录下的所有资源
+        * WEB-INF目录下的资源不能被浏览器直接访问
+        * 断点调试: 使用"小虫子"启动 debug 启动
