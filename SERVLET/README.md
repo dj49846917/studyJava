@@ -99,3 +99,11 @@
         * HttpServlet: 对Http协议的一种封装，简化操作
             1. 定义类继承HttpServlet
             2. 复写doGet/doPost方法
+
+    7. Servlet相关配置
+        1. urlpartten: Servlet访问路径
+            1. 一个Servlet可以定义多个访问路径: @WebServlet({"/d4", "/dd4", "/ddd4"})
+            2. 路径定义规则:
+                1. /xxx
+                2. /xxx/xxx: 多层路径，目录结构
+                3. *.do
