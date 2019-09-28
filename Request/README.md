@@ -46,3 +46,51 @@ org.apache.catalina.connector.RequestFacade @(tomcat)
           
         2. 获取所有的请求头名称
           * <font color=#00ffff>Enumeration<.String> getHeaderNames</font>
+    
+    3. 获取请求体数据:
+      * 请求体: 只有POST请求方式，才有请求体，在请求体中封装了POST请求的请求参数
+      * 步骤:
+         
+         1. 获取流对象
+           * <font color=#00ffff>BufferdReader getReader(): 获取字符输入流，只能操作字符数据</font>
+           * <font color=#00ffff>ServletInputStream getInputStream(): 获取字符节输入流，可以操作所有类型数据</font>
+           
+         2. 再从流对象中拿数据
+         
+ 2. 其他功能
+   1. 获取请求参数通用方式
+      1. String getParameter(String name): 根据参数名称获取参数值  username=zhangsan&password=123
+      
+      2. String[] getParameterValues(String name): 根据参数名称获取参数值的数组 intrest=baseball&intrest=football
+      
+      3. Enumeration<String> getParameterNames()：获取所有请求的参数名称
+      
+      4. Map<String,String[]> getParameterMap(): 获取所有参数的map集合
+      
+      * 中文乱码问题:
+        * <font color=#00ffff>get方式： tomcat8已经将get方式乱码问题解决了</font>
+        * <font color=#00ffff>post方式： 会乱码</font>
+          * <font color=#00ffff>解决：在获取参数前，设置request的编码request.setCharacterEncoding("utf-8")</font>
+      
+   2. 请求转发：一种在服务器内部的资源跳转方式
+     1.步骤：
+        1. 通过request对象获取请求转发器对象：RequestDispatcher getRequestDispatcher(String path)
+        2. 使用RequestDispatcher对象来进行转发：forward(ServletRequest request, ServletResponse response)
+   
+     2.特点：
+        1. 浏览器地址栏路径不会发生变化
+        2. 只能转发到当前服务器内部资源中
+        3. 转发是一次请求
+        
+   3. 共享数据：
+     * <font color=#00ffff>域对象：一个有作用域的对象，可以在范围内共享数据</font>
+     * <font color=#00ffff>request域：代表一次请求的范围，一般用于请求转发的多个资源中共享数据</font>
+     * 方法：
+       1. void setAttribute(String name, Object obj)：存储数据
+       
+       2. Object getAttribute(String name)：通过键获取值
+       
+       3. void removeAttribute(String name)：通过键移除键值对
+       
+   4. 获取ServletContext
+     * <font color=#00ffff>ServletContext getServletContext()</font>     
