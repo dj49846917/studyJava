@@ -96,8 +96,38 @@
 
     * 练习
       1. stu表 添加一条记录
-      2. stu表 修改一条记录
-      3. stu表 删除一条记录
+        * 详细代码请看: JDBC/code/JdbcDemo2.java
 
-   4. ResultSet: 结果集对象
-   5. PreparedStatement: 执行sql的对象
+      2. stu表 修改一条记录
+        * 详细代码请看: JDBC/code/JdbcDemo3.java
+
+      3. stu表 删除一条记录
+        * 详细代码请看: JDBC/code/JdbcDemo4.java
+
+   4. ResultSet: 结果集对象, 封装查询结果
+    * <font color=#00ffff>boolean next(): 游标向下移动一行, 判断当前行是否是最后一行末尾(是否有数据),如果是，则返回false, 如果不是则返回true</font>
+
+    * <font color=#00ffff>getXxx(参数): 获取数据
+      * Xxx: 代表数据类型   如：int getInt(), String getString()</font>
+      * 参数:
+        1. int：代表列的编号， 从1开始 如：getString(1)
+        2. String: getDouble("balance")
+
+    * <font color=#00ffff>注意：</font>
+      * 使用步骤：
+        1. 游标向下移动一行
+        2. 判断是否有数据
+        3. 获取数据
+        4. 详细代码请看: JDBC/code/JdbcDemo7.java
+```
+        while (rs.next()){
+          // 循环判断游标是否是最后一行末尾
+          // 获取数据
+          int id = rs.getInt(1);
+          String name = rs.getString("name");
+          int age = rs.getInt(3);
+          System.out.println(id +"-----"+ name +"-----"+ age);
+        }
+```
+
+   1. PreparedStatement: 执行sql的对象

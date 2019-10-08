@@ -17,7 +17,7 @@ public class JdbcDemo1 {
         // 3. 获取数据库连接对象
         Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/db1", "root", "root");
         // 4. 定义sql语句
-        String sql = "update stu set age = 500 where id = 2";
+        String sql = "update stu set age = 500 where id = 3";
         // 5. 获取执行sql的对象 Statement
         Statement stmt = conn.createStatement();
         // 6. 执行sql
