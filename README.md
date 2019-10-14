@@ -416,3 +416,6 @@
             |---- 8.2 练习
 
 ##  [day20(File类)](https://github.com/dj49846917/studyJava/blob/master/day20/README.md)
+
+## idea修改模板
+file => settings => 选中Appearance & Behavior，并搜索code Template => 点击other => 找到web点开 => 找到Java code template => 找到Servlet Annotated class.java

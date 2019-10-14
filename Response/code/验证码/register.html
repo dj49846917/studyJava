@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <img id="code" src="/day15/checkCode" />
+    <a id="change" href="">看不清换一张?</a>
+
+    <script>
+        window.onload=function () {
+            var img = document.querySelector("#code");
+            img.onclick = function () {
+                // 加时间戳
+                var date = new Date().getTime();
+                img.src = "/day15/checkCode?" + date;
+            }
+        }
+    </script>
+</body>
+</html>

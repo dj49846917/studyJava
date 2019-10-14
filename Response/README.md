@@ -94,3 +94,80 @@
       * 详细代码请看：
 
     4. 验证码
+      1. 本质：图片
+      2. 目的：防止恶意表单注册
+
+
+## ServletContext对象
+  1. 概念：代表整个web应用，可以和程序的容器（服务器）来通信
+  
+  2. 获取：
+    <1>. 通过request对象获取   
+      <font color=#00ffff>request.getServlerContext()</font>
+
+    <2>. 通过HttpServlet获取
+      <font color=#00ffff>this.getServlerContext()</font>
+
+  3. 功能：
+    <1>. 获取MIME类型
+      * <font color=#00ffff>MIME类型：在互联网通信过程中定义的一种文件数据类型</font>
+        * <b>格式：大类型/小类型    text/html   image/jpeg</b>
+
+      * <font color=#00ffff>获取：String getMimeType(String file)</font>
+
+      * 
+
+    <2>. 域对象：共享数据
+      1). setAttribute(String name, Object value)
+
+      2). getAttribute(String name)
+
+      3). removeAttribute(String name)
+
+      * ServletContext对象范围：所有用户所有请求的数据
+
+      *  详细代码请看：studyJava\Response\code\servlet功能\ContextDemo3.java
+
+    <3>. 获取文件的真实(服务器)路径
+      1). 方法：String getRealPath(String path)
+
+      2). 详细代码请看：studyJava\Response\code\servlet功能\ContextDemo5.java
+
+
+## 练习
+  * 文件下载需求：
+    1. 页面显示超链接
+  
+    2. 点击超链接弹出下载提示框
+   
+    3. 完成图片文件下载
+
+  * 分析：
+    1. 超链接指向的资源如果能够被浏览器解析，则在浏览器中展示，如果不能解析，则弹出下载提示框。不满足需求
+
+    2. 任何资源都必须弹出下载提示框
+   
+    3. 使用响应头设置资源的打开方式：
+      * <font color=#00ffff>content-disposition:attachment;filename=xxx</font>
+
+  * 步骤：
+    1. 定义页面，编辑超链接href属性，执行Servlet，传递资源名称filename
+
+    2. 定义Servlet
+      <1>. 获取文件名称
+
+      <2>. 使用字节输入流加载文件进内存
+
+      <3>. 指定response的响应头，content-disposition:attachment;filename=xxx
+
+      <4>. 将数据写出到response输出流
+
+      <5>.详细代码请看: studyJava\Response\code\综合练习\非完美\DownloadServlet.java
+
+  * 问题：
+    * <b>中文文件问题</b>
+      * <font color=#00ffff>解决思路：</font>
+        1. 获取客户端使用的浏览器版本信息
+        2. 根据不同的版本信息，设置filename的编码方式不同
+
+    * 详细代码请看：studyJava\Response\code\综合练习\完美代码\DownloadServlet.java
